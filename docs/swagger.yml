@@ -1,0 +1,232 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/bookshelf/{id}:
+    get:
+      tags:
+      - bookshelf-controller
+      operationId: findById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Bookshelf"
+    put:
+      tags:
+      - bookshelf-controller
+      operationId: update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Bookshelf"
+        required: true
+      responses:
+        "204":
+          description: No Content
+    delete:
+      tags:
+      - bookshelf-controller
+      operationId: delete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "204":
+          description: No Content
+  /api/book/{id}:
+    get:
+      tags:
+      - book-controller
+      operationId: findById_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Book"
+    put:
+      tags:
+      - book-controller
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Book"
+        required: true
+      responses:
+        "204":
+          description: No Content
+    delete:
+      tags:
+      - book-controller
+      operationId: delete_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "204":
+          description: No Content
+  /api/bookshelf:
+    get:
+      tags:
+      - bookshelf-controller
+      operationId: findAll
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Bookshelf"
+    post:
+      tags:
+      - bookshelf-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Bookshelf"
+        required: true
+      responses:
+        "201":
+          description: Created
+  /api/book:
+    get:
+      tags:
+      - book-controller
+      operationId: findAll_1
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Book"
+    post:
+      tags:
+      - book-controller
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Book"
+        required: true
+      responses:
+        "201":
+          description: Created
+components:
+  schemas:
+    Bookshelf:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        books:
+          type: array
+          items:
+            type: integer
+            format: int64
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        author:
+          type: string
+        publisher:
+          type: string
+        genre:
+          type: string
+          enum:
+          - History
+          - Thriller
+          - Mystery
+          - Adventure
+          - Biography
+          - Autobiography
+          - Poetry
+          - Philosophy
+          - Science
+          - Sci_Fi
+          - Romance
+          - Programming
+          - Cooking
+          - Psychology
+          - Other
+        language:
+          type: string
+          enum:
+          - English
+          - German
+          - Russian
+          - Spanish
+          - Indian
+          - French
+          - Italian
+          - Turkish
+          - Japanese
+          - Korean
+          - Arabic
+          - Persian
+          - Bulgarian
+          - Greek
+          - Portuguese
+          - Other
