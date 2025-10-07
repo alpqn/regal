@@ -8,7 +8,9 @@ PG_USER=YOUR_DB_USERNAME \
 PG_PASSWORD=YOUR_DB_PASSWORD \
 docker compose up -d
 ```
-or:
+(the server starts on localhost:8080 by default).
+
+Or:
 - Have Java 25 on your machine
 - Run a PostgreSQL server
 
@@ -20,4 +22,4 @@ PG_PASSWORD=YOUR_DB_PASSWORD \
 ./mvnw spring-boot:run
 ```
 ### Documentation
-API documentation is on GitHub Pages and can be found [here](https://alpqn.github.io/regal/)
+API documentation is on GitHub Pages and can be found [here](https://alpqn.github.io/regal/).
